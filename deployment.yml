@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lab-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lab
+  template:
+    metadata:
+      labels:
+        app: lab
+    spec:
+      containers:
+      - name: Server1-container
+        image: gcr.io/[project_id]/[imagen]
+        ports:
+        - containerPort: 3000
+      - name: Server2-containter
+        image: gcr.io/[project_id]/[imagen]
+        ports:
+        - containerPort: 3001
