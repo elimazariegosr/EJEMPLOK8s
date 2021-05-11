@@ -13,11 +13,11 @@ spec:
         app: lab
     spec:
       containers:
-      - name: Server1-container
+      - name: server1-container
         image: gcr.io/[project_id]/[imagen]
         ports:
         - containerPort: 3000
-      - name: Server2-containter
+      - name: server2-containter
         image: gcr.io/[project_id]/[imagen]
         ports:
-        - containerPort: 3001
+        - containerPort: 5000
