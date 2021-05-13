@@ -9,8 +9,8 @@ app.post('/', (req, res) => {
     data['first'] = 'Server 1' 
     const newData = JSON.stringify(data);
     const options = {
-        hostname: 'localhost',
-        port: 5000,
+        hostname: '35.226.102.166',
+        port: 80,
         path: '/',
         method: 'POST',
         headers: {
@@ -36,3 +36,4 @@ app.get('/', (req, res) => {
 });
 
 app.listen(3000);
+console.log("corriendo en el 3k");

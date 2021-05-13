@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gol-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gol
+  template:
+    metadata:
+      labels:
+        app: gol
+    spec:
+      containers:
+      - name: sgol-container
+        image: gcr.io/pure-advantage-305004/sgol
+        ports:
+        - containerPort: 8000
