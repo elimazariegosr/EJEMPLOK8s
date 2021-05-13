@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grpc-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grpc
+  template:
+    metadata:
+      labels:
+        app: grpc
+    spec:
+      containers:
+      - name: grpc-client-container
+        image: gcr.io/pure-advantage-305004/grpc-client
+        ports:
+        - containerPort: 8000
+      - name: grpc-server-container
+        image: gcr.io/pure-advantage-305004/grpc-server
+        ports:
+        - containerPort: 3000
