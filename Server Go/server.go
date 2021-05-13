@@ -1,5 +1,3 @@
-// example1/natstest-api.go
-
 package main
 
 import (
@@ -13,37 +11,12 @@ type Data struct {
 	Infectedtype string
 	State string
 }
-
 func main() {
-
-	//nc, err := nats.Connect("nats://nats:4222")
-	//nc, err := nats.Connect(nats.DefaultURL)
-	
-	/*if err != nil {
-		panic(err)
-	}
-
-	ec, err := nats.NewEncodedConn(nc, nats.JSON_ENCODER)
-	if err != nil {
-		panic(err)
-	}
-	defer ec.Close()
-
-	log.Info("NATS pub conectado")
-
-	personChanSend := make(chan *Data)
-	ec.BindSendChan("request_subject", personChanSend)
-	*/
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		
 		var d Data
 		err := json.NewDecoder(r.Body).Decode(&d)
-		if err != nil {
-			
-		}else{
-		
-		}
+		if err != nil {}else{}
 	})
-    http.ListenAndServe(":8000", nil)
+    http.ListenAndServe("localhost:8000", nil)
 	
 }
