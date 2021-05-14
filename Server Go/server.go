@@ -17,6 +17,6 @@ func main() {
 		err := json.NewDecoder(r.Body).Decode(&d)
 		if err != nil {}else{}
 	})
-    http.ListenAndServe("localhost:8000", nil)
+    http.ListenAndServe(":8000", nil)
 	
 }
