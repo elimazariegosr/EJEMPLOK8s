@@ -16,9 +16,11 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"google.golang.org/grpc"
+	"github.com/go-redis/redis/v8"
 )
 
 var host = "104.197.236.53"
+var ctx = context.Background()
 
 type Data struct {
 	Name         string
@@ -33,7 +35,7 @@ var collection = Connection()
 
 func Connection() *mongo.Collection {
 	dir := "mongodb://" + host + ":27017/proyecto2"
-
+    
 	client, err := mongo.NewClient(options.Client().ApplyURI(dir))
 	if err != nil {
 		log.Fatal(err)
@@ -80,6 +82,25 @@ func (*server) Greet(ctx context.Context, req *greetpb.GreetRequest) (*greetpb.G
 		Path:         req.GetGreeting().GetPath(),
 	}
 
+	client := redis.NewClient(&redis.Options{
+		Addr:     "104.197.236.53:6379",
+		Password: "",
+		DB:       0,
+	})
+	var msg = `{ "name": "`+req.GetGreeting().GetName()+`",
+	"location": "`+req.GetGreeting().GetLocation()+`",
+	"gender": "`+req.GetGreeting().GetGender()+`",
+	"age": "`+ string(req.GetGreeting().GetAge()) +`",
+	"vaccine_type": "`+req.GetGreeting().GetVaccinetype()+`",
+	"path": "GRPC"  
+	 }`
+	defer client.Close()
+	val, err := client.Do(ctx, "RPUSH", "REGISTROP2", msg).Result()
+		if err != nil {
+			fmt.Println("Error: ", err)
+		}	
+	fmt.Println(val)
+	
 	creacion(data)
 	/*data, _ := json.Marshal(req.GetGreeting())
 	http.Post(host, "application/json", bytes.NewBuffer(data))*/

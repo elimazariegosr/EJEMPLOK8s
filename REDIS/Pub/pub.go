@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 	"net/http"
 
@@ -39,7 +38,7 @@ func send(w http.ResponseWriter, r *http.Request) {
 	"gender": "`+d.Gender+`",
 	"age": "`+string(d.Age)+`",
 	"vaccine_type": "`+d.Vaccine_type+`",
-	"path: REDIS"  
+	"path": "REDIS"  
 	 }`).Err()
 	if err != nil {
 		panic(err)

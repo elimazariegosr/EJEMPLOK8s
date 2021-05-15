@@ -4,7 +4,9 @@ go 1.14
 
 require (
 	github.com/aws/aws-sdk-go v1.38.37 // indirect
+	github.com/go-redis/redis/v8 v8.8.2 // indirect
 	github.com/golang/protobuf v1.4.3
+	github.com/gorilla/mux v1.8.0 // indirect
 	github.com/klauspost/compress v1.12.2 // indirect
 	github.com/youmark/pkcs8 v0.0.0-20201027041543-1326539a0a0a // indirect
 	go.mongodb.org/mongo-driver v1.5.2

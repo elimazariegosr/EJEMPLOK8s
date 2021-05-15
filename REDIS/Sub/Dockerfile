@@ -14,4 +14,4 @@ RUN go mod download
 # Aca pueden existir muchos mas comandos "run"
 
 # Correr NodeJS
-CMD ["go", "run", "client.go"]
+CMD ["go", "run", "sub.go"]
