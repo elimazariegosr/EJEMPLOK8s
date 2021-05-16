@@ -87,10 +87,14 @@ func (*server) Greet(ctx context.Context, req *greetpb.GreetRequest) (*greetpb.G
 		Password: "",
 		DB:       0,
 	})
-	var msg = `{ "name": "`+req.GetGreeting().GetName()+`",
+	s := ""
+	concatenated := fmt.Sprintf("%d%s", req.GetGreeting().GetAge(), s)
+	fmt.Println(concatenated)
+	
+	msg := `{ "name": "`+req.GetGreeting().GetName()+`",
 	"location": "`+req.GetGreeting().GetLocation()+`",
 	"gender": "`+req.GetGreeting().GetGender()+`",
-	"age": "`+ string(req.GetGreeting().GetAge()) +`",
+	"age": `+ concatenated +`,
 	"vaccine_type": "`+req.GetGreeting().GetVaccinetype()+`",
 	"path": "GRPC"  
 	 }`
