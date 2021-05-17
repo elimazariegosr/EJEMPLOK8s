@@ -1,23 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: lab-deployment
+  name: api-dummy-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: lab
+      app: api-dummy
   template:
     metadata:
       labels:
-        app: lab
+        app: api-dummy
     spec:
       containers:
-      - name: server1-container
-        image: gcr.io/[project_id]/[imagen]
+      - name: api-dummy-container
+        image: gcr.io/pure-advantage-305004/api-dummy
         ports:
-        - containerPort: 3000
-      - name: server2-containter
-        image: gcr.io/pure-advantage-305004/server1p2
-        ports:
-        - containerPort: 3001
+        - containerPort: 5000
